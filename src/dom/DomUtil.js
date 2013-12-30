@@ -19,6 +19,14 @@ L.DomUtil = {
 		return value === 'auto' ? null : value;
 	},
 
+	getOffset: function (el) {
+		var rect = el.getBoundingClientRect();
+
+		return new L.Point(
+			rect.left + el.clientLeft,
+			rect.top + el.clientTop);
+	},
+
 	create: function (tagName, className, container) {
 
 		var el = document.createElement(tagName);

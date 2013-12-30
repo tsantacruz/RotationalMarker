@@ -174,11 +174,12 @@ L.DomEvent = {
 			return new L.Point(e.clientX, e.clientY);
 		}
 
-		var rect = container.getBoundingClientRect();
+		// jshint camelcase: false
+		var offset = container._leaflet_offset || L.DomUtil.getOffset(container);
 
 		return new L.Point(
-			e.clientX - rect.left - container.clientLeft,
-			e.clientY - rect.top - container.clientTop);
+			e.clientX - offset.x,
+			e.clientY - offset.y);
 	},
 
 	getWheelDelta: function (e) {
