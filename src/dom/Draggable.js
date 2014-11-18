@@ -20,9 +20,10 @@ L.Draggable = L.Evented.extend({
 		}
 	},
 
-	initialize: function (element, dragStartTarget) {
+	initialize: function (element, dragStartTarget, preventOutline) {
 		this._element = element;
 		this._dragStartTarget = dragStartTarget || element;
+		this._preventOutline = preventOutline;
 	},
 
 	enable: function () {
@@ -48,7 +49,10 @@ L.Draggable = L.Evented.extend({
 		if (e.shiftKey || ((e.which !== 1) && (e.button !== 1) && !e.touches)) { return; }
 
 		L.DomEvent.stopPropagation(e);
-		L.DomEvent.preventDefault(e);
+
+		if (this._preventOutline) {
+			L.DomEvent.preventDefault(e);
+		}
 
 		if (L.Draggable._disabled) { return; }
 
