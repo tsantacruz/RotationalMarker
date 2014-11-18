@@ -51,7 +51,7 @@ L.Draggable = L.Evented.extend({
 		L.DomEvent.stopPropagation(e);
 
 		if (this._preventOutline) {
-			L.DomEvent.preventDefault(e);
+			L.DomUtil.preventOutline(this._element);
 		}
 
 		if (L.Draggable._disabled) { return; }
