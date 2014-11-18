@@ -590,9 +590,6 @@ L.Map = L.Evented.extend({
 		if (type === 'contextmenu') {
 			L.DomEvent.preventDefault(e);
 		}
-		if (type === 'click' || type === 'dblclick' || type === 'contextmenu') {
-			L.DomEvent.stopPropagation(e);
-		}
 
 		// prevents firing click after you just dragged an object
 		if (e.type === 'click' && !e._simulated && this._draggableMoved(target)) { return; }
