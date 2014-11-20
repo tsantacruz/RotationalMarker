@@ -231,4 +231,16 @@ L.DomUtil = {
 		delete this._outlineStyle;
 		L.DomEvent.off(window, 'keydown', L.DomUtil.restoreOutline, this);
 	};
+
+	// Suppress the next click, but only if it's immediate.
+	function suppressClick (e) {
+		L.DomEvent.stop(e);
+		L.DomEvent.off(window, 'click', suppressClick, null, true);
+	}
+	L.DomUtil.suppressClick = function () {
+		L.DomEvent.on(window, 'click', suppressClick, null, true);
+		setTimeout(function() {
+			L.DomEvent.off(window, 'click', suppressClick, null, true);
+		}, 0);
+	};
 })();

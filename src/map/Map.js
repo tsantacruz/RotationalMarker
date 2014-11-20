@@ -593,9 +593,6 @@ L.Map = L.Evented.extend({
 			L.DomEvent.preventDefault(e);
 		}
 
-		// prevents firing click after you just dragged an object
-		if (e.type === 'click' && !e._simulated && this._draggableMoved(target)) { return; }
-
 		var data = {
 			originalEvent: e
 		};
@@ -609,11 +606,6 @@ L.Map = L.Evented.extend({
 			target.fire('preclick', data, true);
 		}
 		target.fire(type, data, true);
-	},
-
-	_draggableMoved: function (obj) {
-		obj = obj.options.draggable ? obj : this;
-		return (obj.dragging && obj.dragging.moved()) || (this.boxZoom && this.boxZoom.moved());
 	},
 
 	_clearHandlers: function () {

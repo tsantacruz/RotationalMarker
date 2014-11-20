@@ -137,6 +137,8 @@ L.Draggable = L.Evented.extend({
 			this.fire('dragend', {
 				distance: this._newPos.distanceTo(this._startPos)
 			});
+
+			L.DomUtil.suppressClick();
 		}
 
 		this._moving = false;

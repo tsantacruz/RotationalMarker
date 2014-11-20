@@ -96,6 +96,8 @@ L.Map.BoxZoom = L.Handler.extend({
 		this._map
 			.fitBounds(bounds)
 			.fire('boxzoomend', {boxZoomBounds: bounds});
+
+		L.DomUtil.suppressClick();
 	},
 
 	_onKeyDown: function (e) {

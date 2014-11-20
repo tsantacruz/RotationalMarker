@@ -7,7 +7,7 @@ var eventsKey = '_leaflet_events';
 
 L.DomEvent = {
 
-	on: function (obj, types, fn, context) {
+	on: function (obj, types, fn, context, capture) {
 
 		if (typeof types === 'object') {
 			for (var type in types) {
@@ -17,14 +17,14 @@ L.DomEvent = {
 			types = L.Util.splitWords(types);
 
 			for (var i = 0, len = types.length; i < len; i++) {
-				this._on(obj, types[i], fn, context);
+				this._on(obj, types[i], fn, context, capture);
 			}
 		}
 
 		return this;
 	},
 
-	off: function (obj, types, fn, context) {
+	off: function (obj, types, fn, context, capture) {
 
 		if (typeof types === 'object') {
 			for (var type in types) {
@@ -34,14 +34,14 @@ L.DomEvent = {
 			types = L.Util.splitWords(types);
 
 			for (var i = 0, len = types.length; i < len; i++) {
-				this._off(obj, types[i], fn, context);
+				this._off(obj, types[i], fn, context, capture);
 			}
 		}
 
 		return this;
 	},
 
-	_on: function (obj, type, fn, context) {
+	_on: function (obj, type, fn, context, capture) {
 		var id = type + L.stamp(fn) + (context ? '_' + L.stamp(context) : '');
 
 		if (obj[eventsKey] && obj[eventsKey][id]) { return this; }
@@ -61,8 +61,8 @@ L.DomEvent = {
 		} else if ('addEventListener' in obj) {
 
 			if (type === 'mousewheel') {
-				obj.addEventListener('DOMMouseScroll', handler, false);
-				obj.addEventListener(type, handler, false);
+				obj.addEventListener('DOMMouseScroll', handler, capture);
+				obj.addEventListener(type, handler, capture);
 
 			} else if ((type === 'mouseenter') || (type === 'mouseleave')) {
 				handler = function (e) {
@@ -70,7 +70,7 @@ L.DomEvent = {
 					if (!L.DomEvent._checkMouse(obj, e)) { return; }
 					return originalHandler(e);
 				};
-				obj.addEventListener(type === 'mouseenter' ? 'mouseover' : 'mouseout', handler, false);
+				obj.addEventListener(type === 'mouseenter' ? 'mouseover' : 'mouseout', handler, capture);
 
 			} else {
 				if (type === 'click' && L.Browser.android) {
@@ -78,7 +78,7 @@ L.DomEvent = {
 						return L.DomEvent._filterClick(e, originalHandler);
 					};
 				}
-				obj.addEventListener(type, handler, false);
+				obj.addEventListener(type, handler, capture);
 			}
 
 		} else if ('attachEvent' in obj) {
@@ -91,7 +91,7 @@ L.DomEvent = {
 		return this;
 	},
 
-	_off: function (obj, type, fn, context) {
+	_off: function (obj, type, fn, context, capture) {
 
 		var id = type + L.stamp(fn) + (context ? '_' + L.stamp(context) : ''),
 		    handler = obj[eventsKey] && obj[eventsKey][id];
@@ -107,13 +107,13 @@ L.DomEvent = {
 		} else if ('removeEventListener' in obj) {
 
 			if (type === 'mousewheel') {
-				obj.removeEventListener('DOMMouseScroll', handler, false);
-				obj.removeEventListener(type, handler, false);
+				obj.removeEventListener('DOMMouseScroll', handler, capture);
+				obj.removeEventListener(type, handler, capture);
 
 			} else {
 				obj.removeEventListener(
 					type === 'mouseenter' ? 'mouseover' :
-					type === 'mouseleave' ? 'mouseout' : type, handler, false);
+					type === 'mouseleave' ? 'mouseout' : type, handler, capture);
 			}
 
 		} else if ('detachEvent' in obj) {
