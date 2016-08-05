@@ -1,3 +1,8 @@
+import L from '../L.js';
+import '../core/Util.js';
+import '../geo/crs/CRS.Earth.js';
+import '../geo/LatLngBounds.js';
+
 /* @class LatLng
  * @aka L.LatLng
  *
@@ -127,3 +132,5 @@ L.latLng = function (a, b, c) {
 	}
 	return new L.LatLng(a, b, c);
 };
+
+export default L.LatLng;

@@ -1,3 +1,6 @@
+import L from '../L.js';
+import '../geometry/Point.js';
+
 /*
  * @class Transformation
  * @aka L.Transformation

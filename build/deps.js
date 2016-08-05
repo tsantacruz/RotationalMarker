@@ -1,28 +1,28 @@
 var deps = {
-	Core: {
-		src: ['Leaflet.js',
-		      'core/Util.js',
-		      'core/Class.js',
-		      'core/Events.js',
-		      'core/Browser.js',
-		      'geometry/Point.js',
-		      'geometry/Bounds.js',
-		      'geometry/Transformation.js',
-		      'dom/DomUtil.js',
-		      'geo/LatLng.js',
-		      'geo/LatLngBounds.js',
-		      'geo/projection/Projection.LonLat.js',
-		      'geo/projection/Projection.SphericalMercator.js',
-		      'geo/crs/CRS.js',
-		      'geo/crs/CRS.Simple.js',
-		      'geo/crs/CRS.Earth.js',
-		      'geo/crs/CRS.EPSG3857.js',
-		      'geo/crs/CRS.EPSG4326.js',
-		      'map/Map.js',
-		      'layer/Layer.js'
-		      ],
-		desc: 'The core of the library, including OOP, events, DOM facilities, basic units, projections (EPSG:3857 and EPSG:4326) and the base Map class.'
-	},
+// 	Core: {
+// 		src: ['Leaflet.js',
+// 		      'core/Util.js',
+// 		      'core/Class.js',
+// 		      'core/Events.js',
+// 		      'core/Browser.js',
+// 		      'geometry/Point.js',
+// 		      'geometry/Bounds.js',
+// 		      'geometry/Transformation.js',
+// 		      'dom/DomUtil.js',
+// 		      'geo/LatLng.js',
+// 		      'geo/LatLngBounds.js',
+// 		      'geo/projection/Projection.LonLat.js',
+// 		      'geo/projection/Projection.SphericalMercator.js',
+// 		      'geo/crs/CRS.js',
+// 		      'geo/crs/CRS.Simple.js',
+// 		      'geo/crs/CRS.Earth.js',
+// 		      'geo/crs/CRS.EPSG3857.js',
+// 		      'geo/crs/CRS.EPSG4326.js',
+// 		      'map/Map.js',
+// 		      'layer/Layer.js'
+// 		      ],
+// 		desc: 'The core of the library, including OOP, events, DOM facilities, basic units, projections (EPSG:3857 and EPSG:4326) and the base Map class.'
+// 	},
 
 	EPSG3395: {
 		src: ['geo/projection/Projection.Mercator.js',

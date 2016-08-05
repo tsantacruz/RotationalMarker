@@ -1,3 +1,9 @@
+import L from '../../L.js';
+import '../../geo/projection/Projection.LonLat.js';
+import '../../geometry/Transformation.js';
+import '../../core/Util.js';
+import './CRS.js';
+
 /*
  * @namespace CRS
  * @crs L.CRS.Simple
@@ -29,3 +35,5 @@ L.CRS.Simple = L.extend({}, L.CRS, {
 
 	infinite: true
 });
+
+export default L.CRS.Simple;

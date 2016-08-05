@@ -1,3 +1,7 @@
+import L from '../L.js';
+import './Util.js';
+import './Class.js';
+
 /*
  * @class Evented
  * @aka L.Evented
@@ -22,7 +26,6 @@
  * map.off('click', onClick);
  * ```
  */
-
 
 L.Evented = L.Class.extend({
 
@@ -297,3 +300,5 @@ proto.fireEvent = proto.fire;
 proto.hasEventListeners = proto.listens;
 
 L.Mixin = {Events: proto};
+
+export default L.Evented;

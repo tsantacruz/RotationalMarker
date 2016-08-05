@@ -1,3 +1,7 @@
+import L from '../L.js';
+import '../core/Util.js';
+import '../core/Browser.js';
+
 /*
  * @namespace DomEvent
  * Utility functions to work with the [DOM events](https://developer.mozilla.org/docs/Web/API/Event), used by Leaflet internally.
@@ -306,3 +310,5 @@ L.DomEvent.addListener = L.DomEvent.on;
 // @function removeListener(…): this
 // Alias to [`L.DomEvent.off`](#domevent-off)
 L.DomEvent.removeListener = L.DomEvent.off;
+
+export default L.DomEvent;

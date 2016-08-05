@@ -1,3 +1,7 @@
+import L from '../../L.js';
+import '../../core/Util.js';
+import './CRS.js';
+
 /*
  * @namespace CRS
  * @crs L.CRS.Earth
@@ -27,3 +31,5 @@ L.CRS.Earth = L.extend({}, L.CRS, {
 		return this.R * Math.acos(Math.min(a, 1));
 	}
 });
+
+export default L.CRS.Earth;

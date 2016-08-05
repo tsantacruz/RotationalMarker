@@ -1,3 +1,7 @@
+import L from '../L.js';
+import '../core/Util.js';
+import '../core/Browser.js';
+
 /*
  * @namespace DomUtil
  *
@@ -318,3 +322,5 @@ L.DomUtil = {
 		L.DomEvent.off(window, 'keydown', L.DomUtil.restoreOutline, this);
 	};
 })();
+
+export default L.DomUtil;

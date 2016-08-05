@@ -7,6 +7,8 @@
  * a sphere. Used by the `EPSG:3857` CRS.
  */
 
+import L from '../../L.js';
+
 L.Projection.SphericalMercator = {
 
 	R: 6378137,
@@ -36,3 +38,5 @@ L.Projection.SphericalMercator = {
 		return L.bounds([-d, -d], [d, d]);
 	})()
 };
+
+export default L.Projection.SphericalMercator;

@@ -1,3 +1,8 @@
+import L from '../../L.js';
+import '../../core/Util.js';
+import './CRS.Earth.js';
+import '../projection/Projection.LonLat.js';
+
 /*
  * @namespace CRS
  * @crs L.CRS.EPSG4326

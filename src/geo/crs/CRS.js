@@ -1,3 +1,6 @@
+import L from '../../L.js';
+import '../../geometry/Bounds.js';
+
 /*
  * @class CRS
  * @aka L.CRS
@@ -105,3 +108,5 @@ L.CRS = {
 		return L.latLng(lat, lng, alt);
 	}
 };
+
+export default L.CRS;

@@ -1,3 +1,6 @@
+import L from '../L.js';
+import '../core/Util.js';
+
 /*
  * @class Point
  * @aka L.Point
@@ -196,3 +199,5 @@ L.point = function (x, y, round) {
 	}
 	return new L.Point(x, y, round);
 };
+
+export default L.Point;

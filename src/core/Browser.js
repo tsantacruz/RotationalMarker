@@ -1,3 +1,5 @@
+import L from '../L.js';
+
 /*
  * @namespace Browser
  * @aka L.Browser
@@ -146,3 +148,5 @@
 	};
 
 }());
+
+export default L.Browser;

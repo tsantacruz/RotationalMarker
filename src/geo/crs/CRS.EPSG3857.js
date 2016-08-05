@@ -1,3 +1,8 @@
+import L from '../../L.js';
+import '../../core/Util.js';
+import './CRS.Earth.js';
+import '../projection/Projection.SphericalMercator.js';
+
 /*
  * @namespace CRS
  * @crs L.CRS.EPSG3857
@@ -20,3 +25,5 @@ L.CRS.EPSG3857 = L.extend({}, L.CRS.Earth, {
 L.CRS.EPSG900913 = L.extend({}, L.CRS.EPSG3857, {
 	code: 'EPSG:900913'
 });
+
+export default L.CRS.EPSG3857;

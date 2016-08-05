@@ -1,3 +1,6 @@
+import L from '../L.js';
+import './Point.js';
+
 /*
  * @class Bounds
  * @aka L.Bounds
@@ -153,3 +156,5 @@ L.bounds = function (a, b) {
 	}
 	return new L.Bounds(a, b);
 };
+
+export default L.Bounds;

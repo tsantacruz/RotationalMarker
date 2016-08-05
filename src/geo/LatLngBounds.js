@@ -1,3 +1,6 @@
+import L from '../L.js';
+import '../geo/LatLng.js';
+
 /*
  * @class LatLngBounds
  * @aka L.LatLngBounds
@@ -239,3 +242,5 @@ L.latLngBounds = function (a, b) {
 	}
 	return new L.LatLngBounds(a, b);
 };
+
+export default L.LatLngBounds;

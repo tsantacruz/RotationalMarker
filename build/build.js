@@ -3,48 +3,51 @@ var fs = require('fs'),
     zlib = require('zlib'),
     SourceNode = require( 'source-map' ).SourceNode;
 
-    deps = require('./deps.js').deps;
+//     deps = require('./deps.js').deps;
 
-function getFiles(compsBase32) {
-	var memo = {},
-	    comps;
+var rollup = require( 'rollup' );
 
-	if (compsBase32) {
-		comps = parseInt(compsBase32, 32).toString(2).split('');
-		console.log('Managing dependencies...');
-	}
 
-	function addFiles(srcs) {
-		for (var j = 0, len = srcs.length; j < len; j++) {
-			memo[srcs[j]] = true;
-		}
-	}
+// function getFiles(compsBase32) {
+// 	var memo = {},
+// 	    comps;
+//
+// 	if (compsBase32) {
+// 		comps = parseInt(compsBase32, 32).toString(2).split('');
+// 		console.log('Managing dependencies...');
+// 	}
+//
+// 	function addFiles(srcs) {
+// 		for (var j = 0, len = srcs.length; j < len; j++) {
+// 			memo[srcs[j]] = true;
+// 		}
+// 	}
+//
+// 	for (var i in deps) {
+// 		if (comps) {
+// 			if (parseInt(comps.pop(), 2) === 1) {
+// 				console.log(' * ' + i);
+// 				addFiles(deps[i].src);
+// 			} else {
+// 				console.log('   ' + i);
+// 			}
+// 		} else {
+// 			addFiles(deps[i].src);
+// 		}
+// 	}
+//
+// 	console.log('');
+//
+// 	var files = [];
+//
+// 	for (var src in memo) {
+// 		files.push('src/' + src);
+// 	}
+//
+// 	return files;
+// }
 
-	for (var i in deps) {
-		if (comps) {
-			if (parseInt(comps.pop(), 2) === 1) {
-				console.log(' * ' + i);
-				addFiles(deps[i].src);
-			} else {
-				console.log('   ' + i);
-			}
-		} else {
-			addFiles(deps[i].src);
-		}
-	}
-
-	console.log('');
-
-	var files = [];
-
-	for (var src in memo) {
-		files.push('src/' + src);
-	}
-
-	return files;
-}
-
-exports.getFiles = getFiles;
+// exports.getFiles = getFiles;
 
 function getSizeDelta(newContent, oldContent, fixCRLF) {
 	if (!oldContent) {
@@ -72,42 +75,72 @@ function loadSilently(path) {
 
 // Concatenate the files while building up a sourcemap for the concatenation,
 // and replace the line defining L.version with the string prepared in the jakefile
-function bundleFiles(files, copy, version) {
-	var node = new SourceNode(null, null, null, '');
+function bundleFiles(copy, version) {
+console.log('bundleFiles');
 
-	node.add(new SourceNode(null, null, null, copy + '(function (window, document, undefined) {'));
+	return rollup.rollup({
+		entry: 'src/Leaflet.js'
+	}).then(function(bundle){
+		console.log('bundleFiles.then');
 
-	for (var i = 0, len = files.length; i < len; i++) {
-		var contents = fs.readFileSync(files[i], 'utf8');
+		var result = bundle.generate({
+			format: 'umd',
+			moduleId: 'L',
+			moduleName: 'L',
+			indent: false,
+			banner: copy,
+			sourceMap: true,
+			globals: {
+				L: 'L'
+			}
+		});
 
-		if (files[i] === 'src/Leaflet.js') {
-			contents = contents.replace(
-				new RegExp('version: \'.*\''),
-				'version: ' + JSON.stringify(version)
-			);
+		/// TODO: Replace the version string in result.code
+// console.log('bundleFiles.result', result);
+		return {
+			src: result.code,
+			srcmap: result.map.toString()
 		}
+	}).catch(function(err){
+		console.error(err);
+	});
 
-		var lines = contents.split('\n');
-		var lineCount = lines.length;
-		var fileNode = new SourceNode(null, null, null, '');
 
-		fileNode.setSourceContent(files[i], contents);
-
-		for (var j=0; j<lineCount; j++) {
-			fileNode.add(new SourceNode(j+1, 0, files[i], lines[j] + '\n'));
-		}
-		node.add(fileNode);
-
-		node.add(new SourceNode(null, null, null, '\n\n'));
-	}
-
-	node.add(new SourceNode(null, null, null, '}(window, document));'));
-
-	var bundle = node.toStringWithSourceMap();
-	return {
-		src: bundle.code,
-		srcmap: bundle.map.toString()
-	};
+// 	var node = new SourceNode(null, null, null, '');
+//
+// 	node.add(new SourceNode(null, null, null, copy + '(function (window, document, undefined) {'));
+//
+// 	for (var i = 0, len = files.length; i < len; i++) {
+// 		var contents = fs.readFileSync(files[i], 'utf8');
+//
+// 		if (files[i] === 'src/Leaflet.js') {
+// 			contents = contents.replace(
+// 				new RegExp('version: \'.*\''),
+// 				'version: ' + JSON.stringify(version)
+// 			);
+// 		}
+//
+// 		var lines = contents.split('\n');
+// 		var lineCount = lines.length;
+// 		var fileNode = new SourceNode(null, null, null, '');
+//
+// 		fileNode.setSourceContent(files[i], contents);
+//
+// 		for (var j=0; j<lineCount; j++) {
+// 			fileNode.add(new SourceNode(j+1, 0, files[i], lines[j] + '\n'));
+// 		}
+// 		node.add(fileNode);
+//
+// 		node.add(new SourceNode(null, null, null, '\n\n'));
+// 	}
+//
+// 	node.add(new SourceNode(null, null, null, '}(window, document));'));
+//
+// 	var bundle = node.toStringWithSourceMap();
+// 	return {
+// 		src: bundle.code,
+// 		srcmap: bundle.map.toString()
+// 	};
 }
 
 function bytesToKB(bytes) {
@@ -116,9 +149,10 @@ function bytesToKB(bytes) {
 
 exports.build = function (callback, version, compsBase32, buildName) {
 
-	var files = getFiles(compsBase32);
+// 	var files = getFiles(compsBase32);
 
-	console.log('Bundling and compressing ' + files.length + ' files...');
+// 	console.log('Bundling and compressing ' + files.length + ' files...');
+	console.log('Bundling and compressing...');
 
 	var copy = fs.readFileSync('src/copyright.js', 'utf8').replace('{VERSION}', version),
 
@@ -127,65 +161,70 @@ exports.build = function (callback, version, compsBase32, buildName) {
 	    srcPath = pathPart + '-src.js',
 	    mapPath = pathPart + '-src.map',
 	    srcFilename = filenamePart + '-src.js',
-	    mapFilename = filenamePart + '-src.map',
+	    mapFilename = filenamePart + '-src.map';
 
-	    bundle = bundleFiles(files, copy, version),
-	    newSrc = bundle.src + '\n//# sourceMappingURL=' + mapFilename,
+// 	    bundle = bundleFiles(files, copy, version),
 
-	    oldSrc = loadSilently(srcPath),
-	    srcDelta = getSizeDelta(newSrc, oldSrc, true);
+	bundleFiles(copy, version).then(function(bundle){
 
-	console.log('\tUncompressed: ' + bytesToKB(newSrc.length) + srcDelta);
+		var newSrc = bundle.src + '\n//# sourceMappingURL=' + mapFilename,
+			oldSrc = loadSilently(srcPath),
+			srcDelta = getSizeDelta(newSrc, oldSrc, true);
 
-	if (newSrc !== oldSrc) {
-		fs.writeFileSync(srcPath, newSrc);
-		fs.writeFileSync(mapPath, bundle.srcmap);
-		console.log('\tSaved to ' + srcPath);
-	}
+		console.log('\tUncompressed: ' + bytesToKB(newSrc.length) + srcDelta);
 
-	var path = pathPart + '.js',
-	    oldCompressed = loadSilently(path),
-	    newCompressed;
-
-	try {
-		newCompressed = copy + UglifyJS.minify(newSrc, {
-			warnings: true,
-			fromString: true
-		}).code;
-	} catch(err) {
-		console.error('UglifyJS failed to minify the files');
-		console.error(err);
-		callback(err);
-	}
-
-	var delta = getSizeDelta(newCompressed, oldCompressed);
-
-	console.log('\tCompressed: ' + bytesToKB(newCompressed.length) + delta);
-
-	var newGzipped,
-	    gzippedDelta = '';
-
-	function done() {
-		if (newCompressed !== oldCompressed) {
-			fs.writeFileSync(path, newCompressed);
-			console.log('\tSaved to ' + path);
+		if (newSrc !== oldSrc) {
+			fs.writeFileSync(srcPath, newSrc);
+			fs.writeFileSync(mapPath, bundle.srcmap);
+			console.log('\tSaved to ' + srcPath);
 		}
-		console.log('\tGzipped: ' + bytesToKB(newGzipped.length) + gzippedDelta);
-		callback();
-	}
 
-	zlib.gzip(newCompressed, function (err, gzipped) {
-		if (err) { return; }
-		newGzipped = gzipped;
-		if (oldCompressed && (oldCompressed !== newCompressed)) {
-			zlib.gzip(oldCompressed, function (err, oldGzipped) {
-				if (err) { return; }
-				gzippedDelta = getSizeDelta(gzipped, oldGzipped);
+		var path = pathPart + '.js',
+			oldCompressed = loadSilently(path),
+			newCompressed;
+
+		try {
+			newCompressed = copy + UglifyJS.minify(newSrc, {
+				warnings: true,
+				fromString: true
+			}).code;
+		} catch(err) {
+			console.error('UglifyJS failed to minify the files');
+			console.error(err);
+			callback(err);
+		}
+
+		var delta = getSizeDelta(newCompressed, oldCompressed);
+
+		console.log('\tCompressed: ' + bytesToKB(newCompressed.length) + delta);
+
+		var newGzipped,
+			gzippedDelta = '';
+
+		function done() {
+			if (newCompressed !== oldCompressed) {
+				fs.writeFileSync(path, newCompressed);
+				console.log('\tSaved to ' + path);
+			}
+			console.log('\tGzipped: ' + bytesToKB(newGzipped.length) + gzippedDelta);
+			callback();
+		}
+
+		zlib.gzip(newCompressed, function (err, gzipped) {
+			if (err) { return; }
+			newGzipped = gzipped;
+			if (oldCompressed && (oldCompressed !== newCompressed)) {
+				zlib.gzip(oldCompressed, function (err, oldGzipped) {
+					if (err) { return; }
+					gzippedDelta = getSizeDelta(gzipped, oldGzipped);
+					done();
+				});
+			} else {
 				done();
-			});
-		} else {
-			done();
-		}
+			}
+		});
+
+
 	});
 };
 
@@ -235,3 +274,7 @@ exports.test = function(complete, fail) {
 	});
 	server.start();
 };
+
+
+/// FIXME: Just for helping debugging.
+exports.build(function(){}, '1.0.0-rc3');

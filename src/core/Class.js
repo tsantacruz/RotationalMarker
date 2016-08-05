@@ -1,3 +1,5 @@
+import L from '../L.js';
+import './Util.js';
 
 // @class Class
 // @aka L.Class
@@ -108,3 +110,5 @@ L.Class.addInitHook = function (fn) { // (Function) || (String, args...)
 	this.prototype._initHooks.push(init);
 	return this;
 };
+
+export default L.Class;

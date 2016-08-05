@@ -1,3 +1,19 @@
+import L from '../L.js';
+import '../core/Util.js';
+import '../core/Events.js';
+import '../core/Browser.js';
+
+import '../dom/DomUtil.js';
+import '../dom/DomEvent.js';
+
+import '../geo/crs/CRS.EPSG3857.js';
+import '../geo/LatLng.js';
+import '../geo/LatLngBounds.js';
+
+import '../geometry/Point.js';
+import '../geometry/Bounds.js';
+
+
 /*
  * @class Map
  * @aka L.Map
@@ -1185,3 +1201,5 @@ L.Map = L.Evented.extend({
 L.map = function (id, options) {
 	return new L.Map(id, options);
 };
+
+export default L.Map;

@@ -1,3 +1,5 @@
+import L from '../L.js';
+
 /*
  * @namespace Util
  *
@@ -248,3 +250,5 @@ L.extend = L.Util.extend;
 L.bind = L.Util.bind;
 L.stamp = L.Util.stamp;
 L.setOptions = L.Util.setOptions;
+
+export default L.Util;

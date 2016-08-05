@@ -11,6 +11,11 @@
  * `EPSG:3395` and `Simple` CRS.
  */
 
+import L from '../../L.js';
+import '../../geometry/Point.js';
+import '../../geometry/Bounds.js';
+import '../../geo/LatLng.js';
+
 L.Projection = {};
 
 L.Projection.LonLat = {
@@ -24,3 +29,5 @@ L.Projection.LonLat = {
 
 	bounds: L.bounds([-180, -90], [180, 90])
 };
+
+export default L.Projection.LonLat;
