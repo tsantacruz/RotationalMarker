@@ -217,7 +217,7 @@ L.ImageOverlay = L.Layer.extend({
 });
 
 // @factory L.imageOverlay(imageUrl: String|Array, bounds: LatLngBounds, options?: ImageOverlay options)
-// Instantiates an image overlay object given the URL of the image and the
+// Instantiates an image overlay object given the URL of the image (or array of URLs) and the
 // geographical bounds it is tied to.
 L.imageOverlay = function (url, bounds, options) {
 	return new L.ImageOverlay(url, bounds, options);
