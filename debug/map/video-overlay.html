@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaflet debug page</title>
+
+	<link rel="stylesheet" href="../../dist/leaflet.css" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../css/screen.css" />
+
+	<script type="text/javascript" src="../../build/deps.js"></script>
+	<script src="../leaflet-include.js"></script>
+</head>
+<body>
+
+	<div id="map"></div>
+	<button id="populate">Populate with 10 markers</button>
+
+	<script type="text/javascript">
+
+		var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib});
+			latlng = new L.LatLng(50.5, 30.51);
+
+		var map = new L.Map('map');
+		map.addLayer(osm);
+
+		var videoUrls = [
+			'https://www.mapbox.com/bites/00188/patricia_nasa.webm',
+			'https://www.mapbox.com/bites/00188/patricia_nasa.mp4'
+		],
+		bounds = L.latLngBounds([[ 32, -130], [ 13, -100]]);
+
+		map.fitBounds(bounds);
+
+		var overlay = L.imageOverlay(videoUrls, bounds, {
+			opacity: 0.8,
+			interactive: true,
+			video: true
+		});
+		map.addLayer(overlay);
+
+		overlay.on('dblclick',function (e) {
+			console.log('Double click on image.');
+		});
+
+	</script>
+</body>
+</html>
