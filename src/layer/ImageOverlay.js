@@ -37,15 +37,7 @@ L.ImageOverlay = L.Layer.extend({
 
 		// @option crossOrigin: Boolean = false
 		// If true, the image will have its crossOrigin attribute set to ''. This is needed if you want to access image pixel data.
-		crossOrigin: false,
-
-		// @option video: Boolean = false
-		// If true, a `<video>` HTML element will be used. The image URL should point to a `.webm`, `.ogv` or `.mp4` file (instead of a `.jpg` or `.png`).
-		video: false,
-
-		// @option autoplay: Boolean = true
-		// If the `video` option is set to true, this option controls whether the video starts playing automatically when loaded.
-		autoplay: true
+		crossOrigin: false
 	},
 
 	initialize: function (url, bounds, options) { // (String, LatLngBounds, Object)
@@ -157,37 +149,29 @@ L.ImageOverlay = L.Layer.extend({
 		return this._bounds;
 	},
 
+	// @method getElement(): HTMLImageElement
+	// Returns the instance of [`HTMLImageElement`](https://developer.mozilla.org/docs/Web/API/HTMLImageElement)
+	// used by this overlay.
 	getElement: function () {
 		return this._image;
 	},
 
 	_initImage: function () {
-		var img = this._image = L.DomUtil.create(this.options.video ? 'video' : 'img',
+		var img = this._image = L.DomUtil.create('img',
 				'leaflet-image-layer ' + (this._zoomAnimated ? 'leaflet-zoom-animated' : ''));
 
 		img.onselectstart = L.Util.falseFn;
 		img.onmousemove = L.Util.falseFn;
 
+		// @event load: Event
+		// Fired when the image has been loaded
 		img.onload = L.bind(this.fire, this, 'load');
 
 		if (this.options.crossOrigin) {
 			img.crossOrigin = '';
 		}
 
-		if (!L.Util.isArray(this._url)) { this._url = [this._url]; }
-		if (this.options.video) {
-			img.autoplay = !!this.options.autoplay;
-			for (var i = 0; i < this._url.length; i++) {
-				var source = L.DomUtil.create('source');
-				source.src = this._url[i];
-				img.appendChild(source);
-			}
-		} else {
-			img.src = this._url.shift();
-			if (this._url.length) {
-				img.srcset = this._url.join(',');
-			}
-		}
+		img.src = this._url;
 		img.alt = this.options.alt;
 	},
 
@@ -216,8 +200,8 @@ L.ImageOverlay = L.Layer.extend({
 	}
 });
 
-// @factory L.imageOverlay(imageUrl: String|Array, bounds: LatLngBounds, options?: ImageOverlay options)
-// Instantiates an image overlay object given the URL of the image (or array of URLs) and the
+// @factory L.imageOverlay(imageUrl: String, bounds: LatLngBounds, options?: ImageOverlay options)
+// Instantiates an image overlay object given the URL of the image and the
 // geographical bounds it is tied to.
 L.imageOverlay = function (url, bounds, options) {
 	return new L.ImageOverlay(url, bounds, options);

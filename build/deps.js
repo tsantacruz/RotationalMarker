@@ -54,6 +54,12 @@ var deps = {
 		desc: 'Used to display an image over a particular rectangular area of the map.'
 	},
 
+	VideoOverlay: {
+		src: ['layer/VideoOverlay.js'],
+		desc: 'Used to display a video over a particular rectangular area of the map.',
+		deps: ['ImageOverlay']
+	},
+
 	Marker: {
 		src: ['layer/marker/Icon.js',
 		      'layer/marker/Icon.Default.js',

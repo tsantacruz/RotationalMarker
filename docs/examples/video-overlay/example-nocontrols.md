@@ -23,36 +23,9 @@ title: Video Overlay Tutorial
 
 	var overlay = L.videoOverlay(videoUrls, bounds, {
 		opacity: 0.8,
-		interactive: false,
-		autoplay: false
+		interactive: true
 	});
 	map.addLayer(overlay);
-
-	overlay.on('load', function () {
-		var MyPauseControl = L.Control.extend({
-			onAdd: function() {
-				var button = L.DomUtil.create('button');
-				button.innerHTML = '⏸';
-				L.DomEvent.on(button, 'click', function () {
-					overlay.getElement().pause();
-				});
-				return button;
-			}
-		});
-		var MyPlayControl = L.Control.extend({
-			onAdd: function() {
-				var button = L.DomUtil.create('button');
-				button.innerHTML = '⏵';
-				L.DomEvent.on(button, 'click', function () {
-					overlay.getElement().play();
-				});
-				return button;
-			}
-		});
-
-		var pauseControl = (new MyPauseControl()).addTo(map);
-		var playControl = (new MyPlayControl()).addTo(map);
-	});
 
 </script>
 

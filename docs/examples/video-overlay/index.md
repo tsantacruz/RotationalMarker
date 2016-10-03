@@ -38,7 +38,7 @@ Then, we'll define the geographical bounds that the video will cover. This is an
 
 	var bounds = L.latLngBounds([[ 32, -130], [ 13, -100]]);
 
-If ou want to see the area covered by a `LatLngBounds`, use a [`L.Rectangle`]((../../reference.html#latlngbounds)):
+If you want to see the area covered by a `LatLngBounds`, use a [`L.Rectangle`]((../../reference.html#latlngbounds)):
 
 	L.rectangle(bounds).addTo(map);
 
@@ -55,8 +55,8 @@ Adding a video overlay works very similar to adding a image overlay. For just on
 
 For a video overlay, just:
 
+* Use `L.videoOverlay` instead of `L.imageOverlay`
 * Instead of the image URL, specify one video URL *or* an array of video URLs
-* Set the `video` option to `true`
 
 ```
 	var videoUrls = [
@@ -66,16 +66,57 @@ For a video overlay, just:
 
 	var bounds = L.latLngBounds([[ 32, -130], [ 13, -100]]);
 
-	var videoOverlay = L.imageOverlay( videoUrls, bounds, {
-		video: true,
+	var videoOverlay = L.videoOverlay( videoUrls, bounds, {
 		opacity: 0.8
 	}).addTo(map);
 ```
 
 And just like that, you'll get the video on your map:
 
-{% include frame.html url="example.html" %}
+{% include frame.html url="example-nocontrols.html" %}
 
 
 Video overlays behave like any other Leaflet layer - you can add and remove them, let the user select from several videos using a [layers control](../layers-control/), etc.
 
+
+### A bit of control over the video
+
+If you read the API documentation, you'll notice that the `L.VideoOverlay` class does not have a `play()` or `pause()` method.
+
+For this, the `getElement()` method of the video overlay is useful. It returns the [`HTMLVideoElement`](https://developer.mozilla.org/docs/Web/API/HTMLImageElement) (which inherits from [`HTMLMediaElement`](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement)) for the overlay - and that has methods like `play()` and `pause()`, e.g.
+
+```
+	videoOverlay.getElement().pause();
+```
+
+This allows us to build custom interfaces. For example, we can build a small subclass of `L.Control` to play/pause this video overlay once it's loaded:
+
+```
+	videoOverlay.on('load', function () {
+		var MyPauseControl = L.Control.extend({
+			onAdd: function() {
+				var button = L.DomUtil.create('button');
+				button.innerHTML = '⏸';
+				L.DomEvent.on(button, 'click', function () {
+					videoOverlay.getElement().pause();
+				});
+				return button;
+			}
+		});
+		var MyPlayControl = L.Control.extend({
+			onAdd: function() {
+				var button = L.DomUtil.create('button');
+				button.innerHTML = '⏵';
+				L.DomEvent.on(button, 'click', function () {
+					videoOverlay.getElement().play();
+				});
+				return button;
+			}
+		});
+
+		var pauseControl = (new MyPauseControl()).addTo(map);
+		var playControl = (new MyPlayControl()).addTo(map);
+	});
+```
+
+{% include frame.html url="example.html" %}

@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Leaflet debug page</title>
+	<meta charset="utf-8" />
 
 	<link rel="stylesheet" href="../../dist/leaflet.css" />
 
@@ -37,10 +38,10 @@
 
 		map.fitBounds(bounds);
 
-		var overlay = L.imageOverlay(videoUrls, bounds, {
+		var overlay = L.videoOverlay(videoUrls, bounds, {
 			opacity: 0.8,
 			interactive: true,
-			video: true
+			autoplay: false
 		});
 		map.addLayer(overlay);
 
@@ -48,6 +49,31 @@
 			console.log('Double click on image.');
 		});
 
+		overlay.on('load', function () {
+			var MyPauseControl = L.Control.extend({
+				onAdd: function() {
+					var button = L.DomUtil.create('button');
+					button.innerHTML = '⏸';
+					L.DomEvent.on(button, 'click', function () {
+						overlay.getElement().pause();
+					});
+					return button;
+				}
+			});
+			var MyPlayControl = L.Control.extend({
+				onAdd: function() {
+					var button = L.DomUtil.create('button');
+					button.innerHTML = '⏵';
+					L.DomEvent.on(button, 'click', function () {
+						overlay.getElement().play();
+					});
+					return button;
+				}
+			});
+
+			var pauseControl = (new MyPauseControl()).addTo(map);
+			var playControl = (new MyPlayControl()).addTo(map);
+		});
 	</script>
 </body>
 </html>
