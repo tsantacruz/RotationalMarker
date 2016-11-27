@@ -17,7 +17,72 @@
 
 <script src="temples.js" type="text/javascript"></script>
 <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
-//<script src="arrow-marker.png" type="text/javascript"></script>
+<!--//<script src="arrow-marker.png" type="text/javascript"></script>-->
+
+<script>
+    (function() {
+// save these original methods before they are overwritten
+        var proto_initIcon = L.Marker.prototype._initIcon;
+        var proto_setPos = L.Marker.prototype._setPos;
+        var proto_onDrag = L.Handler.MarkerDrag.prototype._onDrag;
+
+        var oldIE = (L.DomUtil.TRANSFORM === 'msTransform');
+
+        L.Marker.addInitHook(function () {
+            var iconOptions = this.options.icon && this.options.icon.options;
+            var iconAnchor = iconOptions && this.options.icon.options.iconAnchor;
+            if (iconAnchor) {
+                iconAnchor = (iconAnchor[0] + 'px ' + iconAnchor[1] + 'px');
+            }
+            this.options.rotationOrigin = this.options.rotationOrigin || iconAnchor || 'center bottom' ;
+            this.options.rotationAngle = this.options.rotationAngle || 0;
+        });
+
+        L.Marker.include({
+            _initIcon: function() {
+                proto_initIcon.call(this);
+            },
+
+            _setPos: function (pos) {
+                proto_setPos.call(this, pos);
+                this._applyRotation();
+            },
+
+            _applyRotation: function () {
+                if(this.options.rotationAngle) {
+                    this.icon.style[L.DomUtil.TRANSFORM+'Origin'] = this.options.rotationOrigin;
+
+                    if(oldIE) {
+                        // for IE 9, use the 2D rotation
+                        this.icon.style[L.DomUtil.TRANSFORM] = 'rotate(' + this.options.rotationAngle + 'deg)';
+                    } else {
+                        q// for modern browsers, prefer the 3D accelerated version
+                        this._icon.style[L.DomUtil.TRANSFORM] += ' rotateZ(' + this.options.rotationAngle + 'deg)';
+                    }
+                }
+            },
+
+            setRotationAngle: function(angle) {
+                this.options.rotationAngle = angle;
+                this.update();
+                return this;
+            },
+
+            setRotationOrigin: function(origin) {
+                this.options.rotationOrigin = origin;
+                this.update();
+                return this;
+            }
+        });
+
+        L.Handler.MarkerDrag.include({
+            _onDrag: function (e) {
+                proto_onDrag.call(this, e);
+                this._marker._applyRotation();
+            }
+        })
+    })();
+</script>
 
 <script>
     //creating a set map frame
@@ -28,7 +93,7 @@
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
         '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        'Imagery :copyright: <a href="http://mapbox.com">Mapbox</a>',
         id: 'mapbox.light'
     }).addTo(map);
 
@@ -42,17 +107,40 @@
     var templeLayer = L.geoJson(temples, {
 
         pointToLayer: function (feature, latlng) {
-            return L.marker(latlng, {icon: arrowIcon});
-        }
+            return L.marker(latlng, {icon: arrowIcon, rotationAngle: feature.geometry.rotationAngle});
+        },
     }).addTo(map);
 
-    templeLayer.addData(temples);
+    var L = {
+        version: '1.0.1'
+    };
 
+    function expose() {
+        var oldL = window.L;
 
+        L.noConflict = function () {
+            window.L = oldL;
+            return this;
+        };
 
+        window.L = L;
+    }
 
+    // define Leaflet for Node module pattern loaders, including Browserify
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        module.exports = L;
+
+// define Leaflet as an AMD module
+    } else if (typeof define === 'function' && define.amd) {
+        define(L);
+    }
+
+    // define Leaflet as a global L variable, saving the original L to restore later if needed
+    if (typeof window !== 'undefined') {
+        expose();
+    }
 
 </script>
 <script type="text/javascript" src="temples.js"></script>`
 </body>
-</html>
+</html
