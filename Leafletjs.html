@@ -106,12 +106,23 @@
         iconSize: [32, 32]
     });
 
+    //Creating the Circle Icon
+    var circleIcon = L.icon({
+        iconUrl: 'circle-marker.png',
+        iconSize: [12, 12]
+    });
+
     //Assigns the arrow to each temple so that now, the arrow is the marker which points out to its entrance
     L.geoJson(temples, {
         pointToLayer: function (feature, latlng) {
-            return L.marker(latlng, {icon: arrowIcon, rotationAngle: feature.geometry.rotationAngle})
-                    .bindPopup("This is temple " + feature.properties.name)
-                    ;
+            if (feature.properties.orientation != ""){
+                return L.marker(latlng, {icon: arrowIcon, rotationAngle: feature.geometry.rotationAngle})
+                        .bindPopup("This is temple " + feature.properties.name);
+            }
+            else {
+                return L.marker(latlng, {icon: circleIcon})
+                        .bindPopup("This is temple " + feature.properties.name);
+            }
         }
     }).addTo(map);
 
