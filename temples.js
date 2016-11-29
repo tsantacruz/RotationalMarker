@@ -37,7 +37,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "45",
+            "rotationAngle": "",
             "coordinates": [
                 12.478333,
                 41.890278
@@ -79,7 +79,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "50",
+            "rotationAngle": "227",
             "coordinates": [
                 12.485741,
                 41.888854
@@ -121,7 +121,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "90",
+            "rotationAngle": "180",
             "coordinates": [
                 12.4795912,
                 41.8923136
@@ -163,7 +163,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "10",
+            "rotationAngle": "180",
             "coordinates": [
                 12.47989,
                 41.89238
@@ -205,7 +205,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "80",
+            "rotationAngle": "",
             "coordinates": [
                 12.48979,
                 41.880581
@@ -247,7 +247,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "145",
+            "rotationAngle": "",
             "coordinates": [
                 12.4822154,
                 41.8925778
@@ -289,7 +289,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "120",
+            "rotationAngle": "24",
             "coordinates": [
                 12.485755,
                 41.891773
@@ -331,7 +331,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "270",
+            "rotationAngle": "",
             "coordinates": [
                 12.524306,
                 41.857844
@@ -373,7 +373,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "230",
+            "rotationAngle": "",
             "coordinates": [
                 12.533184,
                 41.862522
@@ -415,7 +415,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "245",
+            "rotationAngle": "",
             "coordinates": [
                 12.493367,
                 41.887594
@@ -457,7 +457,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "345",
+            "rotationAngle": "123",
             "coordinates": [
                 12.484245,
                 41.89293
@@ -499,7 +499,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "300",
+            "rotationAngle": "203",
             "coordinates": [
                 12.484984,
                 41.889554
@@ -541,7 +541,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "390",
+            "rotationAngle": "",
             "coordinates": [
                 12.44195,
                 41.83614
@@ -583,7 +583,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "290",
+            "rotationAngle": "",
             "coordinates": [
                 12.483194,
                 41.882828
@@ -625,7 +625,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "12",
+            "rotationAngle": "217",
             "coordinates": [
                 12.486689,
                 41.892139
@@ -667,7 +667,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "178",
+            "rotationAngle": "",
             "coordinates": [
                 12.484471,
                 41.891616
@@ -709,7 +709,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "168",
+            "rotationAngle": "300",
             "coordinates": [
                 12.486246,
                 41.891943
@@ -751,7 +751,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "139",
+            "rotationAngle": "205",
             "coordinates": [
                 12.487166,
                 41.891846
@@ -793,7 +793,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "145",
+            "rotationAngle": "",
             "coordinates": [
                 12.4858,
                 41.8956
@@ -835,7 +835,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
-            "rotationAngle": "23",
+            "rotationAngle": "",
             "coordinates": [
                 12.488894,
                 41.889603
@@ -877,6 +877,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "180",
             "coordinates": [
                 12.476723,
                 41.895163
@@ -918,6 +919,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.4812,
                 41.8914
@@ -959,6 +961,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.480663,
                 41.889166
@@ -1000,6 +1003,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "90",
             "coordinates": [
                 12.476839,
                 41.895387
@@ -1041,6 +1045,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "180",
             "coordinates": [
                 12.480833,
                 41.890556
@@ -1082,6 +1087,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.555806,
                 41.843745
@@ -1123,6 +1129,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.479404,
                 41.899944
@@ -1164,6 +1171,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.47781,
                 41.89315
@@ -1205,6 +1213,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "25",
             "coordinates": [
                 12.4806393,
                 41.8887057
@@ -1246,6 +1255,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.492366,
                 41.994283
@@ -1287,6 +1297,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.501237,
                 41.890049
@@ -1328,6 +1339,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.479167,
                 41.897221
@@ -1369,6 +1381,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "75",
             "coordinates": [
                 12.479937,
                 41.891111
@@ -1410,6 +1423,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.476906,
                 41.894862
@@ -1451,6 +1465,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.47972,
                 41.88444
@@ -1492,6 +1507,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "75",
             "coordinates": [
                 12.479937,
                 41.891093
@@ -1533,6 +1549,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.536854,
                 41.840026
@@ -1574,6 +1591,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 35.235806,
                 31.777972
@@ -1615,6 +1633,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 36.300833,
                 33.510833
@@ -1656,6 +1675,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 36.666667,
                 33.966667
@@ -1697,6 +1717,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 36.204425,
                 34.006839
@@ -1738,6 +1759,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 13.260113,
                 41.290817
@@ -1779,6 +1801,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.381667,
                 41.892222
@@ -1820,6 +1843,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.481892,
                 41.891825
@@ -1861,6 +1885,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.4804,
                 41.88319
@@ -1902,6 +1927,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.481667,
                 41.892222
@@ -1943,6 +1969,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 14.4845,
                 40.7499
@@ -1984,6 +2011,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.479497,
                 41.893128
@@ -2025,6 +2053,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.47926,
                 41.893081
@@ -2066,6 +2095,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 35.531175,
                 33.112906
@@ -2107,6 +2137,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "90",
             "coordinates": [
                 12.476876,
                 41.895664
@@ -2148,6 +2179,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "90",
             "coordinates": [
                 12.476957,
                 41.894983
@@ -2189,6 +2221,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.486944,
                 41.894444
@@ -2230,6 +2263,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "180",
             "coordinates": [
                 12.480833,
                 41.890556
@@ -2271,6 +2305,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.478081,
                 41.899964
@@ -2312,6 +2347,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.5181785,
                 41.8550631
@@ -2353,6 +2389,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.511867,
                 41.893845
@@ -2394,6 +2431,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.487089,
                 41.893664
@@ -2435,6 +2473,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.4891,
                 41.902964
@@ -2476,6 +2515,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.485662,
                 41.89981
@@ -2517,6 +2557,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.497281,
                 41.889675
@@ -2558,6 +2599,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.483655,
                 41.883213
@@ -2599,6 +2641,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.496744,
                 41.884655
@@ -2640,6 +2683,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.493118,
                 41.879922
@@ -2681,6 +2725,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.482628,
                 41.89291
@@ -2722,6 +2767,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.482856,
                 41.888114
@@ -2763,6 +2809,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.479176,
                 41.894242
@@ -2804,6 +2851,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.501063,
                 41.894894
@@ -2845,6 +2893,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.549292,
                 41.865272
@@ -2886,6 +2935,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.5480362,
                 41.8279699
@@ -2927,6 +2977,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.488719,
                 41.885632
@@ -2968,6 +3019,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.478714,
                 41.895163
@@ -3009,6 +3061,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.478714,
                 41.895163
@@ -3050,6 +3103,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "354",
             "coordinates": [
                 12.47685,
                 41.89856
@@ -3091,6 +3145,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "340",
             "coordinates": [
                 12.480883,
                 41.889232
@@ -3132,6 +3187,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.447668,
                 41.959271
@@ -3173,6 +3229,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "32",
             "coordinates": [
                 12.484187,
                 41.892666
@@ -3214,6 +3271,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "75",
             "coordinates": [
                 12.48,
                 41.891111
@@ -3255,6 +3313,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.800843,
                 41.966809
@@ -3296,6 +3355,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.474003,
                 41.893685
@@ -3337,6 +3397,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.520981,
                 41.852196
@@ -3378,6 +3439,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.483611,
                 41.892776
@@ -3419,6 +3481,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "",
             "coordinates": [
                 12.490168,
                 41.890812
@@ -3460,6 +3523,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "130",
             "coordinates": [
                 12.4848,
                 41.8942
@@ -3501,6 +3565,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "90",
             "coordinates": [
                 12.473014,
                 41.895335
@@ -3542,6 +3607,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "119",
             "coordinates": [
                 12.484081,
                 41.892876
@@ -3583,6 +3649,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "35",
             "coordinates": [
                 12.486141,
                 41.891792
@@ -3624,6 +3691,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "190",
             "coordinates": [
                 12.8009,
                 41.9667
@@ -3665,6 +3733,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "219",
             "coordinates": [
                 12.48521,
                 41.889418
