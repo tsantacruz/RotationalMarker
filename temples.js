@@ -33,10 +33,11 @@ var temples =
             "dare": "",
             "arachne": "",
             "wikipedia": "",
-            "wikidata": ""
+            "wikidata": "",
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "45",
             "coordinates": [
                 12.478333,
                 41.890278
@@ -78,6 +79,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "50",
             "coordinates": [
                 12.485741,
                 41.888854
@@ -119,6 +121,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "90",
             "coordinates": [
                 12.4795912,
                 41.8923136
@@ -160,6 +163,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "10",
             "coordinates": [
                 12.47989,
                 41.89238
@@ -201,6 +205,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "80",
             "coordinates": [
                 12.48979,
                 41.880581
@@ -242,6 +247,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "145",
             "coordinates": [
                 12.4822154,
                 41.8925778
@@ -283,6 +289,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "120",
             "coordinates": [
                 12.485755,
                 41.891773
@@ -324,6 +331,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "270",
             "coordinates": [
                 12.524306,
                 41.857844
@@ -365,6 +373,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "230",
             "coordinates": [
                 12.533184,
                 41.862522
@@ -406,6 +415,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "245",
             "coordinates": [
                 12.493367,
                 41.887594
@@ -447,6 +457,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "345",
             "coordinates": [
                 12.484245,
                 41.89293
@@ -488,6 +499,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "300",
             "coordinates": [
                 12.484984,
                 41.889554
@@ -529,6 +541,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "390",
             "coordinates": [
                 12.44195,
                 41.83614
@@ -570,6 +583,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "290",
             "coordinates": [
                 12.483194,
                 41.882828
@@ -611,6 +625,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "12",
             "coordinates": [
                 12.486689,
                 41.892139
@@ -652,6 +667,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "178",
             "coordinates": [
                 12.484471,
                 41.891616
@@ -693,6 +709,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "168",
             "coordinates": [
                 12.486246,
                 41.891943
@@ -734,6 +751,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "139",
             "coordinates": [
                 12.487166,
                 41.891846
@@ -775,6 +793,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "145",
             "coordinates": [
                 12.4858,
                 41.8956
@@ -816,6 +835,7 @@ var temples =
         },
         "geometry": {
             "type": "Point",
+            "rotationAngle": "23",
             "coordinates": [
                 12.488894,
                 41.889603

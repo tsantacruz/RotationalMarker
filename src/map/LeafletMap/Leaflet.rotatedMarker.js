@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-    <title>Leaflet GeoJSON </title>
-    <meta charset="utf-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
-</head>
-<body>
-
-<div id="map" style="width: 600px; height: 400px">
-
-</div>
-
-<script src="temples.js" type="text/javascript"></script>
-<script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
-<!--//<script src="arrow-marker.png" type="text/javascript"></script>-->
-
-<script>
-    (function() {
+(function() {
     // save these original methods before they are overwritten
     var proto_initIcon = L.Marker.prototype._initIcon;
     var proto_setPos = L.Marker.prototype._setPos;
@@ -82,36 +60,3 @@
         }
     })
 })();
-    </script>
-
-<script>
-    //creating a set map frame
-    var map = L.map('map').setView([41.893, 12.48], 14);
-
-    //map layer that uses the interactive map interface
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-        maxZoom: 18,
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        id: 'mapbox.light'
-    }).addTo(map);
-
-    //Creating the Arrow Icon
-    var arrowIcon = L.icon({
-        iconUrl: 'arrow-marker.png',
-        iconSize: [32, 32]
-    });
-
-    //Assigns the arrow to each temple so that now, the arrow is the marker which points out to its entrance
-    var templeLayer = L.geoJson(temples, {
-        
-        pointToLayer: function (feature, latlng) {
-            return L.marker(latlng, {icon: arrowIcon, rotationAngle: feature.geometry.rotationAngle});
-        },
-    }).addTo(map);
-
-</script>
-<script type="text/javascript" src="temples.js"></script>`
-</body>
-</html>
