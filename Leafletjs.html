@@ -85,6 +85,7 @@
     </script>
 
 <script>
+
     //creating a set map frame
     var map = L.map('map').setView([41.893, 12.48], 14);
 
@@ -97,6 +98,8 @@
         id: 'mapbox.light'
     }).addTo(map);
 
+
+
     //Creating the Arrow Icon
     var arrowIcon = L.icon({
         iconUrl: 'arrow-marker.png',
@@ -104,11 +107,11 @@
     });
 
     //Assigns the arrow to each temple so that now, the arrow is the marker which points out to its entrance
-    var templeLayer = L.geoJson(temples, {
-        pointToLayer: function (feature, latlng, popup) {
+    L.geoJson(temples, {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {icon: arrowIcon, rotationAngle: feature.geometry.rotationAngle})
-                    .bindPopup(popup)
-                    .openPopup();
+                    .bindPopup("This is temple " + feature.properties.name)
+                    ;
         }
     }).addTo(map);
 
