@@ -33,7 +33,7 @@ var temples =
             "dare": "",
             "arachne": "",
             "wikipedia": "",
-            "wikidata": "",
+            "wikidata": ""
         },
         "geometry": {
             "type": "Point",
