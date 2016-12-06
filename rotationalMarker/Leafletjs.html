@@ -117,11 +117,11 @@
         pointToLayer: function (feature, latlng) {
             if (feature.properties.orientation != ""){
                 return L.marker(latlng, {icon: arrowIcon, rotationAngle: feature.geometry.rotationAngle})
-                        .bindPopup("This is temple " + feature.properties.name);
+                        .bindPopup("Temple of " + feature.properties.name);
             }
             else {
                 return L.marker(latlng, {icon: circleIcon})
-                        .bindPopup("This is temple " + feature.properties.name);
+                        .bindPopup("Temple of " + feature.properties.name);
             }
         }
     }).addTo(map);
